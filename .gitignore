@@ -3,3 +3,5 @@
 managed_components
 build_output.log
 build
+secrets.ini
+dependencies.lock

@@ -1,0 +1,17 @@
+# ESP32-C6: Matter over WiFi + BLE commissioning
+
+# WiFi station (Matter fabric provisioned via BLE commissioning)
+CONFIG_ESP_WIFI_ENABLED=y
+CONFIG_ENABLE_WIFI_STATION=y
+# CONFIG_ENABLE_WIFI_AP is not set
+
+# BLE used only for commissioning — freed after fabric is provisioned.
+# Saves ~50 KB RAM and reduces idle current once commissioned.
+CONFIG_USE_BLE_ONLY_FOR_COMMISSIONING=y
+
+# WiFi modem sleep — allows the radio to sleep between beacons (~20-30 mA savings)
+CONFIG_ESP_WIFI_DYNAMIC_RX_BUFFER_NUM=16
+CONFIG_PM_POWER_DOWN_PERIPHERAL_IN_LIGHT_SLEEP=y
+
+# mDNS for Matter commissioning window over WiFi
+# CONFIG_USE_MINIMAL_MDNS is not set
