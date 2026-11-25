@@ -51,6 +51,11 @@ CONFIG_FREERTOS_ENABLE_BACKWARD_COMPATIBILITY=y
 # mDNS — extended discovery for Matter commissioning window advertisement
 CONFIG_ENABLE_EXTENDED_DISCOVERY=y
 
+# WiFi station — required for Matter over WiFi (overridden to disabled in sdkconfig.defaults.esp32h2)
+# CHIP uses CHIP_SYSTEM_CONFIG_USE_LWIP which requires CONFIG_ENABLE_WIFI_STATION to be set.
+CONFIG_ESP_WIFI_ENABLED=y
+CONFIG_ENABLE_WIFI_STATION=y
+
 # Power management — CPU dynamic frequency scaling
 CONFIG_PM_ENABLE=y
 CONFIG_PM_DFS_INIT_AUTO=y
