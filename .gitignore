@@ -25,3 +25,9 @@ _autosave-*
 
 # Backups written by ESP-IDF menuconfig / sdkconfig regeneration
 *.old
+
+# Generated ESP-IDF config (rebuilt from sdkconfig.defaults*, which stay tracked)
+sdkconfig
+sdkconfig.*
+!sdkconfig.defaults
+!sdkconfig.defaults.*
