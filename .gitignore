@@ -1,7 +1,27 @@
+# Firmware (PlatformIO / ESP-IDF)
 .pio
 .vscode
 managed_components
 build_output.log
 build
-secrets.ini
 dependencies.lock
+
+# Secrets (copy secrets.ini.example to secrets.ini)
+secrets.ini
+
+# KiCad: track only .kicad_pro, .kicad_sch and .kicad_pcb
+*-backups/
+fp-info-cache
+*.kicad_prl
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.bak
+_autosave-*
+~*.lck
+\#auto_saved_files\#
+
+# macOS
+.DS_Store
+
+# Backups written by ESP-IDF menuconfig / sdkconfig regeneration
+*.old
