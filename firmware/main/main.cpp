@@ -25,6 +25,7 @@
 #endif
 
 #include "MatterInit.h"
+#include "MatterDeviceProvider.h"
 #include "MatterValve.h"
 #include "ValveControl.h"
 
@@ -213,8 +214,7 @@ void loop() {
             while (true) delay(1000);
         }
 
-        Serial.printf("Setup discriminator : %d\n", MATTER_DEVICE_SETUP_DISCRIMINATOR);
-        Serial.printf("Setup passcode      : %lu\n", (unsigned long)MATTER_DEVICE_SETUP_PASSCODE);
+        MatterDeviceProvider::printPairingInfo();
 
         gState = MatterInit::isCommissioned() ? State::CONNECTING : State::NOT_COMMISSIONED;
         break;
@@ -231,10 +231,8 @@ void loop() {
         static uint32_t lastPrint = 0;
         if (millis() - lastPrint >= 10000) {
             lastPrint = millis();
-            Serial.println("Waiting for Matter commissioning…");
-            Serial.printf("  Discriminator: %d  Passcode: %lu\n",
-                          MATTER_DEVICE_SETUP_DISCRIMINATOR,
-                          (unsigned long)MATTER_DEVICE_SETUP_PASSCODE);
+            Serial.printf("Waiting for Matter commissioning… manual pairing code: %s\n",
+                          MatterDeviceProvider::getManualPairingCode().c_str());
         }
         break;
     }
